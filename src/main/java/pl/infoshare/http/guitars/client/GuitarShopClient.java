@@ -1,6 +1,9 @@
 package pl.infoshare.http.guitars.client;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -17,6 +20,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Component
+@CacheConfig(cacheNames = "guitars")
 public class GuitarShopClient {
 
     private final WebClient webClient;
@@ -31,7 +35,9 @@ public class GuitarShopClient {
                 .build();
     }
 
+    @Cacheable
     public List<Guitar> getGuitars() {
+        System.out.println("getGuitars");
         return webClient.get()
                 .uri("/guitars")
                 .retrieve()
@@ -59,6 +65,7 @@ public class GuitarShopClient {
                 .block();
     }
 
+    @CacheEvict(allEntries = true)
     public void purchaseCart(String cartId) {
         webClient.post()
                 .uri("/carts/checkout")
