@@ -2,8 +2,8 @@ package pl.infoshare.http.guitars;
 
 import org.springframework.stereotype.Component;
 import pl.infoshare.http.guitars.client.AddGuitarRequest;
-import pl.infoshare.http.guitars.client.Guitar;
 import pl.infoshare.http.guitars.client.GuitarShopClient;
+import pl.infoshare.http.guitars.client.Guitar;
 
 @Component
 public class GuitarPurchaseService {
