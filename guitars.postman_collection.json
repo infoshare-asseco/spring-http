@@ -1,0 +1,198 @@
+{
+	"info": {
+		"_postman_id": "099a0927-d4ec-4b40-a37e-01af2fd7bf15",
+		"name": "guitars",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all guitars",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{server}}/guitars",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"guitars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create cart for user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{server}}/carts",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"carts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add guitar to cart",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Cart-Id",
+						"value": "{{cartId}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"guitarId\": \"{{guitarId}}\",\n\t\"amount\": 2\n}"
+				},
+				"url": {
+					"raw": "{{server}}/carts/guitars",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"carts",
+						"guitars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add guitar to cart - bad request",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Cart-Id",
+						"type": "text",
+						"value": "{{cartId}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"guitarId\": \"{{guitarId}}\",\n\t\"amount\": 0\n}"
+				},
+				"url": {
+					"raw": "{{server}}/carts/guitars",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"carts",
+						"guitars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Checkout cart",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "user",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "user",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "fab02da9-7a26-47a4-bb24-02301f0a4b94",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "9573fbf5-c28b-4c2d-b550-27f691d7e9b4",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "f63748ca-3d7d-4069-9d77-ba915806faad",
+			"key": "server",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"id": "5de9b7d1-269d-41ab-866b-431bb713018d",
+			"key": "cartId",
+			"value": "31d226d6-4dd2-4463-958e-b70bae700d8a",
+			"type": "string"
+		},
+		{
+			"id": "1c5a8bc3-4237-4821-b53f-085866a19e10",
+			"key": "guitarId",
+			"value": "fe58389b-e983-4a00-b961-a49e46bfcdb5",
+			"type": "string"
+		}
+	]
+}
